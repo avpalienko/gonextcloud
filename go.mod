@@ -1,4 +1,4 @@
-module gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud
+module github.com/avpalienko/gonextcloud
 
 go 1.12
 
