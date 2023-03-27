@@ -6,7 +6,7 @@ stages:
 before_script:
 - mkdir -p /go/src/gitlab.bertha.cloud/partitio/Nextcloud-Partitio
 - cp -r $CI_PROJECT_DIR /go/src/gitlab.bertha.cloud/partitio/Nextcloud-Partitio
-- cd /go/src/gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud
+- cd /go/src/github.com/avpalienko/gonextcloud
 - make dep
 
 unit_tests:

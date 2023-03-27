@@ -4,6 +4,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	req "github.com/levigross/grequests"
 )
 
 // NewClient create a new client
@@ -33,6 +34,7 @@ type Client interface {
 	Monitoring() (*Monitoring, error)
 	// Login authorize client
 	Login(username string, password string) error
+	LoginWithOptions(username string, password string, options req.RequestOptions) error
 	// Logout clear connetion and session
 	Logout() error
 }
@@ -179,4 +181,5 @@ type WebDav interface {
 	// Walk walks the file tree rooted at root, calling walkFn for each file or
 	// directory in the tree, including root.
 	Walk(path string, walkFunc filepath.WalkFunc) error
+	GetAclList(path string) ([]Acl, error)
 }

@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	req "github.com/levigross/grequests"
-	"gitlab.bertha.cloud/adphi/gowebdav"
+	"github.com/avpalienko/gowebdav"
 )
 
 // client is the API client that performs all operations against a Nextcloud server.

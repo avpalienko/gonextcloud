@@ -1,9 +1,9 @@
 ![Nextcloud](https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nextcloud_Logo.svg/640px-Nextcloud_Logo.svg.png)
 
-[![pipeline status](https://gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud/badges/master/pipeline.svg)](https://gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud/commits/master)
-[![coverage report](https://gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud/badges/master/coverage.svg)](https://gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud/commits/master)
-[![Go Report Card](https://goreportcard.com/badge/gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud)](https://goreportcard.com/report/gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud)
-[![GoDoc](https://godoc.org/gitlab.com/gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud?status.svg)](https://godoc.org/gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud)
+[![pipeline status](https://github.com/avpalienko/gonextcloud/badges/master/pipeline.svg)](https://github.com/avpalienko/gonextcloud/commits/master)
+[![coverage report](https://github.com/avpalienko/gonextcloud/badges/master/coverage.svg)](https://github.com/avpalienko/gonextcloud/commits/master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/avpalienko/gonextcloud)](https://goreportcard.com/report/github.com/avpalienko/gonextcloud)
+[![GoDoc](https://godoc.org/gitlab.com/github.com/avpalienko/gonextcloud?status.svg)](https://godoc.org/github.com/avpalienko/gonextcloud)
 # GoNextcloud
 
 A simple Client for Nextcloud's Provisioning API in Go.
@@ -14,7 +14,7 @@ https://docs.nextcloud.com/server/13/admin_manual/configuration_user/user_provis
 ## Usage
 
 ```go
-import "gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud"
+import "github.com/avpalienko/gonextcloud"
 ```
 
 You use the library by creating a client object and calling methods on it.
@@ -25,7 +25,7 @@ package main
 
 import (
     "fmt"
-    "gitlab.bertha.cloud/partitio/Nextcloud-Partitio/gonextcloud"
+    "github.com/avpalienko/gonextcloud"
 )
 
 func main() {
