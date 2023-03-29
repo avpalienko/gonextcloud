@@ -27,7 +27,7 @@ var (
 		apps:               &url.URL{Path: apiPath.Path + "/cloud/apps"},
 		monitor:            &url.URL{Path: apiPath.Path + "/apps/serverinfo/api/v1/info"},
 		shares:             &url.URL{Path: apiPath.Path + "/apps/files_sharing/api/v1/shares"},
-		groupfolders:       &url.URL{Path: "/apps/groupfolders/folders"},
+		groupfolders:       &url.URL{Path: "/index.php/apps/groupfolders/folders"},
 		appsConfig:         &url.URL{Path: apiPath.Path + "/apps/provisioning_api/api/v1/config/apps"},
 		notifications:      &url.URL{Path: apiPath.Path + "/apps/notifications/api/v2/notifications"},
 		adminNotifications: &url.URL{Path: apiPath.Path + "/apps/admin_notifications/api/v2/notifications"},

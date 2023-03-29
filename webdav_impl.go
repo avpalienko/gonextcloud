@@ -1,13 +1,13 @@
 package gonextcloud
 
 import (
+	"encoding/xml"
 	"os"
 	"path/filepath"
 	"sort"
 
 	"github.com/avpalienko/gowebdav"
 )
-
 
 // ShareType is the nextcloud shares types enum :
 type AclType string
@@ -18,8 +18,8 @@ const (
 )
 
 type Acl struct {
-	Type     	AclType
-	Id       	string
+	Type        AclType
+	Id          string
 	DisplayName string
 	Mask        int
 	Permissions SharePermission
@@ -98,7 +98,7 @@ func (wd *webDav) readDir(dirname string) ([]os.FileInfo, error) {
 	return fs, nil
 }
 
-func (wd *webDav) GetAclList(path string) ([]Acl, error){
+func (wd *webDav) GetAclList(path string) ([]Acl, error) {
 	var acList []Acl
 	parse := func(resp interface{}) error {
 		r := resp.(*response)
@@ -113,12 +113,27 @@ func (wd *webDav) GetAclList(path string) ([]Acl, error){
 		}
 		return nil
 	}
-
 	err := wd.FindProps(path, "xmlns:nc='http://nextcloud.org/ns'", []string{"nc:acl-list", "nc:group-folder-id"}, &response{}, parse)
 	if err != nil {
 		return nil, err
 	}
 	return acList, err
+}
+
+func (wd *webDav) SetAclList(path string, acList []Acl) error {
+	acls := aclList{Acl: make([]acl, len(acList))}
+	for i, a := range acList {
+		acls.Acl[i] = acl{
+			MapType:     string(a.Type),
+			Id:          a.Id,
+			Mask:        a.Mask,
+			Permissions: int(a.Permissions),
+		}
+	}
+	err := wd.PatchProps(path, "xmlns:nc='http://nextcloud.org/ns'", acls)
+
+	return err
+
 }
 
 type response struct {
@@ -127,14 +142,19 @@ type response struct {
 }
 
 type ncProp struct {
-	AclLists []acl `xml:"http://nextcloud.org/ns acl-list"`
-	GfId     int   `xml:"http://nextcloud.org/ns group-folder-id"`
+	AclLists []acl `xml:"http://nextcloud.org/ns acl-list>acl"`
+	GfId int `xml:"http://nextcloud.org/ns group-folder-id"`
+}
+
+type aclList struct {
+	XMLName xml.Name `xml:"http://nextcloud.org/ns acl-list"`
+	Acl []acl `xml:"acl"`
 }
 
 type acl struct {
-	MapType     string `xml:"acl>acl-mapping-type"`
-	Id          string `xml:"acl>acl-mapping-id"`
-	DispName    string `xml:"acl>acl-mapping-display-name"`
-	Mask        int    `xml:"acl>acl-mask"`
-	Permissions int    `xml:"acl>acl-permissions"`
+	MapType     string `xml:"acl-mapping-type"`
+	Id          string `xml:"acl-mapping-id"`
+	DispName    string `xml:"acl-mapping-display-name",omitempty`
+	Mask        int    `xml:"acl-mask"`
+	Permissions int    `xml:"acl-permissions"`
 }

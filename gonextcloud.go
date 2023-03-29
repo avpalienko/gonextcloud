@@ -182,4 +182,5 @@ type WebDav interface {
 	// directory in the tree, including root.
 	Walk(path string, walkFunc filepath.WalkFunc) error
 	GetAclList(path string) ([]Acl, error)
+	SetAclList(path string, acList []Acl) (error)
 }
