@@ -1,5 +1,7 @@
 github.com/avpalienko/gowebdav v0.0.0-20230324173440-a3d934936be3 h1:KzulZcTmS14EfMP4sv3LnI3NEIUB+clDnxIxARiS7oU=
 github.com/avpalienko/gowebdav v0.0.0-20230324173440-a3d934936be3/go.mod h1:DonMDVGr0rfKHqmJ/5cBAHiS9f3JNeNAEkQRCKoFKp0=
+github.com/avpalienko/gowebdav v0.0.0-20230329193857-c0edbb4906d0 h1:dd5H0kPzzm77s8Df37gZQ2oLIJBTCb4CVUcEFcSHqh4=
+github.com/avpalienko/gowebdav v0.0.0-20230329193857-c0edbb4906d0/go.mod h1:DonMDVGr0rfKHqmJ/5cBAHiS9f3JNeNAEkQRCKoFKp0=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/fatih/structs v0.0.0-20180123065059-ebf56d35bba7 h1:bGT+Ub6bpzHl7AAYQhBrZ5nYTAH2SF/848WducU0Ao4=
