@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/avpalienko/gowebdav"
 )
@@ -135,6 +136,35 @@ func (wd *webDav) SetAclList(path string, acList []Acl) error {
 	return err
 
 }
+
+func (wd *webDav) GetFileId(path string) (string, error) {
+	var fileId string
+	type response struct {
+		Href   string `xml:"DAV: href"`
+		Props  [] struct {
+			Prop struct {
+				FileId string `xml:"http://owncloud.org/ns fileid"`
+			} `xml:"DAV: prop"`
+			Status string `xml:"DAV: status"`
+		} `xml:"DAV: propstat"`
+	}
+	parse := func(resp interface{}) error {
+		r := resp.(*response)
+		for _, prop := range r.Props {
+			if strings.Contains( prop.Status,  "200") {
+				fileId = prop.Prop.FileId
+				return nil
+			}
+		}
+		return nil
+	}
+	err := wd.FindProps(path, "xmlns:oc='http://owncloud.org/ns'", []string{"oc:fileid"}, &response{}, parse)
+	if err != nil {
+		return "", err
+	}
+	return fileId, err
+}
+
 
 type response struct {
 	Href   string `xml:"DAV: href"`

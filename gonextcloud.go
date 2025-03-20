@@ -183,4 +183,5 @@ type WebDav interface {
 	Walk(path string, walkFunc filepath.WalkFunc) error
 	GetAclList(path string) ([]Acl, error)
 	SetAclList(path string, acList []Acl) (error)
+    GetFileId(path string) (string, error)
 }
