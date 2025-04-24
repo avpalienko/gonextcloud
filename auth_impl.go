@@ -38,6 +38,9 @@ func (c *client) LoginWithOptions(username string, password string, options req.
 	}
 	// Create webdav client
 	c.webdav = newWebDav(c.baseURL.String()+"/remote.php/webdav", c.username, c.password)
+	for k, v := range options.Headers {
+		c.webdav.SetHeader(k, v)
+	}
 	return nil
 }
 func (c *client) Login(username string, password string) error {
