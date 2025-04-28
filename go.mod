@@ -3,7 +3,7 @@ module github.com/avpalienko/gonextcloud
 go 1.12
 
 require (
-	github.com/avpalienko/gowebdav v0.0.0-20230324173440-a3d934936be3
+	github.com/avpalienko/gowebdav v0.0.0-20230329193857-c0edbb4906d0
 	github.com/fatih/structs v0.0.0-20180123065059-ebf56d35bba7
 	github.com/google/go-querystring v0.0.0-20170111101155-53e6ce116135 // indirect
 	github.com/kr/pretty v0.1.0 // indirect

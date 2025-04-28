@@ -9,10 +9,10 @@ import (
 var errUnauthorized = fmt.Errorf("login first")
 
 // Login perform login and create a session with the Nextcloud API.
-func (c *client) LoginWithOptions(username string, password string, options req.RequestOptions ) error {
+func (c *client) LoginWithOptions(username string, password string, options req.RequestOptions) error {
 	c.username = username
 	c.password = password
-	
+
 	if len(options.Headers) == 0 {
 		options.Headers = c.headers
 	}
@@ -20,7 +20,7 @@ func (c *client) LoginWithOptions(username string, password string, options req.
 		options.Auth = []string{c.username, c.password}
 	}
 	c.session = req.NewSession(&options)
-	// TODO What to do with capabilities ? (other thant connection validation)
+	// TODO: What to do with capabilities? (other than connection validation)
 	u := c.baseURL.ResolveReference(routes.capabilities)
 	res, err := c.session.Get(u.String(), nil)
 	if err != nil {
@@ -46,7 +46,6 @@ func (c *client) LoginWithOptions(username string, password string, options req.
 func (c *client) Login(username string, password string) error {
 	options := req.RequestOptions{
 		Headers: c.headers,
-		Auth:    []string{c.username, c.password},
 	}
 	return c.LoginWithOptions(username, password, options)
 }
